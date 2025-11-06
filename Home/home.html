@@ -1,0 +1,42 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ConneXus - Home</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Welcome to ConneXus</h1>
+            <p>A comprehensive platform for managing student clubs in colleges.</p>
+        </div>
+    </header>
+
+    <section class="features">
+        <div class="container">
+            <h2>Features</h2>
+            <ul>
+                <li>Centralized club management</li>
+                <li>Event planning and scheduling</li>
+                <li>Member communication and engagement</li>
+                <li>Resource sharing and collaboration</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="cta">
+        <div class="container">
+            <h2>Ready to get started?</h2>
+            <a href="{% url 'login' %}" class="btn">Login</a>
+            <a href="{% url 'signup' %}" class="btn">Sign Up</a>
+        </div>
+    </section>
+
+    <footer>
+            <p>&copy; 2024 ConneXus. All rights reserved.</p>
+    </footer>
+</body>
+</html>
