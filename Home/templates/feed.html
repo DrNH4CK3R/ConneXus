@@ -1,0 +1,68 @@
+{% extends 'user.html' %}
+{% load static %}
+
+    {% block title %}Member Dashboard{% endblock %}
+    {% block extra_head %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/feed.css' %}">
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.14/index.global.min.js"></script>
+    {% endblock %}
+
+    {% block content %}
+        <h2 class="welcome">Welcome, {{ user.username }}</h2>
+
+        <h3>Important Notifications</h3>
+        <ul>
+        {% for notification in important_notifications %}
+            <li>{{ notification.headline }}</li>
+        {% empty %}
+            <li>No important notifications found.</li>
+        {% endfor %}
+        </ul>
+
+        <h1>Events</h1>
+    {% for evnt in latest_events %}
+        <div class="event">
+            <h2>{{ evnt.event_name }}</h2>
+            <h3>{{ evnt.organizing_club }}</h3>
+            <h3>{{ evnt.date_time }}</h3>
+            <p>{{ evnt.event_description }}</p>
+        </div>
+    {% endfor %}
+        <!-- Add more events here -->
+
+        <h2 id="notifications">Notifications</h2>
+        <ul>
+        {% for note in notdata %}
+            <li>
+                <b>{{ note.headline }}</b><br>
+                {{ note.description }}
+            </li>
+        {% endfor %}
+        </ul>
+
+        <h1 class="cal">Calendar</h1>
+        <div class="calendar" id="calendar"></div>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                console.log("Calendar script loaded");  // Debugging log
+                var calendarEl = document.getElementById('calendar');
+                if (!calendarEl) {
+                    console.error("Calendar element not found");
+                    return;
+                }
+                var calendar = new FullCalendar.Calendar(calendarEl, {
+                    initialView: 'dayGridMonth',
+                    events: {
+                        url: '{% url "events_json" %}',
+                        failure: function() {
+                            alert('There was an error while fetching events!');
+                        }
+                    },
+                    eventClick: function(info) {
+                        alert('Event: ' + info.event.title + '\n' + 'Description: ' + info.event.extendedProps.description);
+                    }
+                });
+                calendar.render();
+            });
+        </script>
+{% endblock %}

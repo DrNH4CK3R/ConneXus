@@ -1,0 +1,85 @@
+{% extends 'admin.html' %}
+{% load static %}
+
+    {% block title %}Events{% endblock %}
+    {% block extra_head %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/addEvent.css' %}">
+    {% endblock %}
+
+    {% block content %}
+
+    <div class="add-event">
+        <h2>Add Event</h2>
+        <form id="add-event-form" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+
+            <button type="submit" name="event_submit">Add Event</button>
+        </form>
+
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                {% if message.message == 'Organizing club not found.' %}
+                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+        {% endif %}
+
+        <h2>Delete Event</h2>
+        <form method="post" id="add-event-form" action="/delEvent/">
+            {% csrf_token %}
+            <label for="event_name">Event Name:</label>
+            <input type="text" name="event_name" id="event_name" placeholder="Enter event name" autocomplete="off">
+
+            <ul id="event_list"></ul>
+            
+            <button type="submit">Delete Event</button>
+        </form>
+
+         <h2>Report Generation</h2>
+        <form id="event-form" method="post">
+            {% csrf_token %}
+            {{ another_form.as_p }}
+
+            <button type="submit" name="report_submit">Generate Report</button>
+        </form>
+
+         {% if report %}
+            <h2>Event Report</h2>
+            <div class="report-container">
+                <pre>{{ report }}</pre>
+            </div>
+
+        {% endif %}
+        
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#event_name').on('input', function() {
+            var query = $(this).val();
+            $.ajax({
+                url: "{% url 'search_events' %}",
+                data: {
+                    'query': query
+                },
+                success: function(data) {
+                    $('#event_list').empty();
+                    for (var i = 0; i < data.length; i++) {
+                        $('#event_list').append('<li>' + data[i] + '</li>');
+                    }
+                }
+            });
+        });
+        
+        // To fill the input with the clicked event name
+        $('#event_list').on('click', 'li', function() {
+            $('#event_name').val($(this).text());
+            $('#event_list').empty();
+        });
+    });
+</script>
+{% endblock %}

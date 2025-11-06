@@ -1,0 +1,62 @@
+{% extends 'admin.html' %}
+{% load static %}
+
+    {% block title %}Notifications{% endblock %}
+    {% block extra_head %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/addNot.css' %}">
+    {% endblock %}
+
+    {% block content %}
+
+    <div class="add-notification">
+        <h2>Add Notification</h2>
+        <form method="post">
+            {% csrf_token %}
+            <label for="headline">Headline:</label>
+            <input type="text" id="headline" name="headline">
+
+            <label for="notification_description">Notification Description:</label>
+            <textarea id="notification_description" name="notification_description"></textarea>
+
+            <button type="submit">Add Notification</button>
+        </form>
+
+        <h2>Delete Notification</h2>
+        <form method="post" action="/delNotic/">
+            {% csrf_token %}
+            <label for="event_name">Notification headline:</label>
+            <input type="text" id="headline" name="headline" placeholder="Enter notification headline" autocomplete="off">
+
+            <ul id="notification_list"></ul>
+
+            <button type="submit">Delete Notification</button>
+        </form>
+        
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#headline').on('input', function() {
+            var query = $(this).val();
+            $.ajax({
+                url: "{% url 'search_notifications' %}",
+                data: {
+                    'query': query
+                },
+                success: function(data) {
+                    $('#notification_list').empty();
+                    for (var i = 0; i < data.length; i++) {
+                        $('#notification_list').append('<li>' + data[i] + '</li>');
+                    }
+                }
+            });
+        });
+            
+        // To fill the input with the clicked notification headline
+        $('#notification_list').on('click', 'li', function() {
+            $('#headline').val($(this).text());
+            $('#notification_list').empty();
+        });
+    });
+</script>
+{% endblock %}

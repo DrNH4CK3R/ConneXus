@@ -1,0 +1,107 @@
+{% extends 'admin.html' %}
+{% load static %}
+
+    {% block title %}Members{% endblock %}
+
+    {% block content %}
+
+    <style type="text/css">
+
+        h2 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+
+        .form-inline {
+            display: flex;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        .form-control {
+            margin-right: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            flex: 1;
+        }
+
+        .form-control.mb-2.mr-sm-2 {
+            margin-bottom: 10px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            background-color: #2c3e50;
+            border: none;
+            color: white;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        .btn:hover {
+            background-color: #1abc9c;
+        }
+
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .table th, .table td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+
+        .table th {
+            background-color: #f2f2f2;
+        }
+
+        .table tr:hover {
+            background-color: #f1f1f1;
+        }
+    </style>
+
+    <h2>User List</h2>
+    <form method="get" class="form-inline">
+        <input type="text" name="q" placeholder="Search by name, branch, or semester" value="{{ request.GET.q }}" class="form-control mb-2 mr-sm-2">
+        <select name="club" class="form-control mb-2 mr-sm-2">
+            <option value="">All Clubs</option>
+            {% for club in clubs %}
+                <option value="{{ club.name }}" {% if club.name == selected_club %}selected{% endif %}>{{ club.name }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit" class="btn btn-primary mb-2">Search</button>
+    </form>
+    
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Full Name</th>
+                <th>Branch</th>
+                <th>Semester</th>
+                <th>Email</th>
+                <th>Clubs</th>
+                <!-- Add other fields as necessary -->
+            </tr>
+        </thead>
+        <tbody>
+            {% for member in members %}
+            <tr>
+                <td>{{ member.full_name }}</td>
+                <td>{{ member.branch }}</td>
+                <td>{{ member.semester }}</td>
+                <td>{{ member.email }}</td>
+                <td>
+                    {% for club in member.clubs.all %}
+                        {{ club.name }}{% if not forloop.last %}, {% endif %}
+                    {% endfor %}
+                </td>
+                <!-- Add other fields as necessary -->
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends 'user.html' %}
+
+{% block title %}Member Details{% endblock %}
+
+{% block content %}
+    <h2>Member Details</h2>
+    <p><strong>Full Name:</strong> {{ member.full_name }}</p>
+    <p><strong>Email:</strong> {{ member.email }}</p>
+    <p><strong>Phone:</strong> {{ member.phone_number }}</p>
+    <p><strong>Branch:</strong> {{ member.branch }}</p>
+    <p><strong>Semester:</strong> {{ member.semester }}</p>
+    <p><strong>Clubs:</strong> 
+        {% for club in member.clubs.all %}
+            {{ club.name }}{% if not forloop.last %}, {% endif %}
+        {% endfor %}
+    </p>
+{% endblock %}

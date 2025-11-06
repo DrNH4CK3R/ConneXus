@@ -1,0 +1,20 @@
+{% extends 'admin.html' %}
+
+{% block title %}Add Club{% endblock %}
+
+{% block content %}
+<h2>Existing Clubs</h2>
+    <ul>
+        {% for club in clubs %}
+            <li>{{ club.name }}</li>
+        {% endfor %}
+    </ul>
+    
+<h2>Add Club</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Add Club</button>
+</form>
+
+{% endblock %}

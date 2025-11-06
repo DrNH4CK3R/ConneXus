@@ -1,0 +1,99 @@
+{% load static %}
+<html>
+    <head>
+        <title>ConneXus - Home</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://cdn.tailwindcss.com"></script>
+    </head>
+    <body>
+        <div class="min-h-screen bg-white flex flex-col">
+            <nav class="flex justify-between items-center p-6">
+                <div class="text-lg font-bold">
+                    <img src="{% static 'images/logoC.png' %}" alt="Logo" class="h-10 w-10">
+                </div>
+                <div class="space-x-8 text-zinc-600 ">
+                    <a href="#about" class="hover:text-zinc-900 ">Features</a>
+                    <a href="#about" class="hover:text-zinc-900 ">About</a>
+                    <a href="https://www.adishankara.ac.in/contact-us" class="hover:text-zinc-900 ">Contact</a>
+                </div>
+            </nav>
+            <div class="flex flex-1 items-center justify-center px-6 py-12">
+                <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="flex flex-col justify-center">
+                        <h1 class="text-4xl md:text-5xl font-extrabold text-zinc-900 mb-4">
+                        Streamline Student Club Management
+                        </h1>
+                        <p class="text-lg text-zinc-600 mb-8">
+                        Connexus is a powerful platform that helps student clubs organize events, manage memberships, and engage their communities.
+                        </p>
+                        <div class="flex space-x-4">
+                            <a href="{% url 'login' %}"><button class="bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700">Log In</button></a>
+                            <a href="{% url 'signup' %}"><button class="bg-white text-zinc-900 py-2 px-4 rounded-lg border border-zinc-300 hover:bg-zinc-100 ">Sign Up</button></a>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-center">
+                        <img src="https://www.adishankara.ac.in/images/placement/image3.jpg" alt="Placeholder Image" class="rounded-lg shadow-lg">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-zinc-50 py-16 px-4 h-3/5 sm:px-6 lg:px-8" id="about">
+            <div class="max-w-7xl mx-auto text-center">
+                <h2 class="text-3xl font-extrabold text-zinc-900 sm:text-4xl">
+                Unlock the Power of Connexus
+                </h2>
+                <p class="mt-4 text-lg leading-6 text-zinc-500">
+                Connexus provides a comprehensive suite of tools to help your student club thrive.
+                </p>
+            </div>
+            <div class="mt-10">
+                <div class="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-3">
+                    <div class="text-center">
+                        <div class="flex items-center justify-center h-12 w-12 rounded-full bg-indigo-500 mx-auto">
+                            <img aria-hidden="true" alt="club management icon" src="https://placehold.co/24x24" />
+                        </div>
+                        <h3 class="mt-4 text-lg leading-6 font-medium text-zinc-900">Club Management</h3>
+                        <p class="mt-2 text-base text-zinc-500">
+                        Easily manage your club's events, and communications all in one place.
+                        </p>
+                    </div>
+                    <div class="text-center">
+                        <div class="flex items-center justify-center h-12 w-12 rounded-full bg-indigo-500 mx-auto">
+                            <img aria-hidden="true" alt="event planning icon" src="https://placehold.co/24x24" />
+                        </div>
+                        <h3 class="mt-4 text-lg leading-6 font-medium text-zinc-900">Event Planning</h3>
+                        <p class="mt-2 text-base text-zinc-500">
+                        Streamline your event planning process with powerful tools for scheduling, promotion.
+                        </p>
+                    </div>
+                    <div class="text-center">
+                        <div class="flex items-center justify-center h-12 w-12 rounded-full bg-indigo-500 mx-auto">
+                            <img aria-hidden="true" alt="member engagement icon" src="https://placehold.co/24x24" />
+                        </div>
+                        <h3 class="mt-4 text-lg leading-6 font-medium text-zinc-900">Member Engagement</h3>
+                        <p class="mt-2 text-base text-zinc-500">
+                        Foster a thriving community with tools for communication, collaboration.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="flex flex-col items-center justify-center h-auto bg-zinc-50 p-4">
+            <div class="text-center">
+                <h2 class="text-3xl font-bold text-zinc-900 mb-4">Take Your Student Club to the Next Level</h2>
+                <p class="text-lg text-zinc-600  mb-6">Connexus provides the tools and features you need to manage<br> your student club effectively and engage your members.</p>
+                <div class="flex  items-center justify-center space-x-4">
+		          <a href="{% url 'login' %}"><button class="bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700">Log in</button></a>
+         	      <a href="{% url 'signup' %}"><button class="bg-white text-zinc-900 py-2 px-4 rounded-lg border border-zinc-300 hover:bg-zinc-100">Sign up</button></a>
+                </div>
+            </div>
+            <footer class="mt-16 text-zinc-600 ">
+            © 2024 Connexus. All rights reserved.
+            </footer>
+        </div>
+
+    </body>
+</html>

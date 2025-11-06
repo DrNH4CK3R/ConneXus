@@ -1,0 +1,30 @@
+{% extends 'user.html' %}
+{% load static %}
+
+{% block title %}Club Events{% endblock %}
+{% block extra_head %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/clubEvents.css' %}">
+{% endblock %}
+
+{% block content %}
+
+    <h2>Events by Club</h2>
+    {% for club, events in events_by_club.items %}
+        <div class="club-section">
+            <h3>{{ club.name }}</h3>
+            {% if events %}
+                <ul>
+                    {% for event in events %}
+                        <li>
+                            <strong>{{ event.event_name }}</strong>
+                            <p>{{ event.date_time }}</p>
+                            <p>{{ event.event_description }}</p>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>No events found for this club.</p>
+            {% endif %}
+        </div>
+    {% endfor %}
+{% endblock %}

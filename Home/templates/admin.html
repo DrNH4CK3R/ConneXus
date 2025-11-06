@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}{% endblock %}</title>
+    {% block extra_head %}{% endblock %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/user.css' %}">
+</head>
+<body>
+{% if user.is_authenticated %}
+    <div class="sidebar">
+        <a href="{% url 'admin_dashboard' %}">Home</a>
+        <a href="{% url 'notic' %}">Add Notifications</a>
+        <a href="{% url 'event' %}">Manage Events</a>
+        <a href="{% url 'clubs' %}">Clubs</a>
+        <a href="{% url 'members' %}">Members</a>
+        <p>{{ user.username }}</p>
+        <form action="{% url 'logout' %}" method="post">
+            {% csrf_token %}
+            <button type="submit">Log Out</button>
+        </form>
+    </div>
+
+    <div class="feed">
+        {% block content %}{% endblock %}
+    </div>
+{% else %}
+    <h1>In order to access this page <a href="{% url 'login' %}">Please login</a></h1>
+{% endif %}
+
+</body>
+</html>
