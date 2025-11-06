@@ -1,0 +1,22 @@
+.welcome{
+    color: #251681;
+}
+ul {
+    color: #252639;
+    list-style-type: none;
+    padding: 0;
+}
+ul li {
+    margin-bottom: 20px;
+}
+.event {
+    color: #110845; 
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background: rgba(111, 190, 204, 0.20);
+}
+.cal {
+    margin-top: 60px;
+}

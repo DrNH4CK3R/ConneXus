@@ -1,0 +1,40 @@
+h2 {
+    text-align: center;
+    color: #333;
+}
+
+.club-section {
+    margin-bottom: 20px;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.club-section h3 {
+    background: #007BFF;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.club-section ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.club-section ul li {
+    background: #f9f9f9;
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.club-section ul li strong {
+    display: block;
+    color: #007BFF;
+}
+
+.club-section ul li p {
+    margin: 5px 0;
+    color: #666;
+}

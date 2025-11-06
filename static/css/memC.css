@@ -1,0 +1,59 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #FFFCFF;
+    margin: 0;
+    padding: 0;
+}
+.container {
+    max-width: 600px;
+    color: #252639;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="number"] {
+    width: calc(100% - 12px); /* Adjust for padding */
+    padding: 6px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+.container textarea {
+    width: calc(100% - 12px); /* Adjust for padding */
+    padding: 6px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Styling for club checkboxes */
+.club-checkbox {
+    margin-bottom: 5px;
+}
+
+.club-checkbox input[type="checkbox"] {
+    display: inline-block;
+    width: auto;
+    margin-right: 5px;
+}

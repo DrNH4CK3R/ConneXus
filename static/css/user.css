@@ -1,0 +1,38 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #FFFCFF;
+    margin: 0;
+    padding: 0;
+}
+.sidebar {
+    width: 250px;
+    background-color: #110845;
+    color: #FFFCFF;
+    padding-top: 20px;
+    position: fixed;
+    height: 100%;
+    overflow: auto;
+}
+.sidebar a {
+    padding: 10px;
+    text-decoration: none;
+    color: #FFFCFF;
+    display: block;
+}
+.sidebar a:hover {
+    background-color: #251681;
+}
+.sidebar p {
+    position: absolute;
+    bottom: 60px;
+    left: 10px;
+}
+.sidebar form {
+    position: absolute;
+    bottom: 40px;
+    left: 10px;
+}
+.feed {
+    margin-left: 300px;
+    padding: 30px;
+}

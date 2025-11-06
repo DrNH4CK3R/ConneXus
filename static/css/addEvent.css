@@ -1,0 +1,45 @@
+.add-event {
+    max-width: 100%;
+}
+.add-event h2 {
+    color: #252639;
+    margin-bottom: 20px;
+}
+
+.add-event label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.add-event input[type="text"],
+.add-event input[type="datetime-local"],
+.add-event textarea {
+    width: 90%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.add-event button {
+    margin-top: 20px;
+    display: block;
+    width: 80%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.add-event button:hover {
+    background-color: #0056b3;
+}
+
+.report-container {
+    width: 100%;
+    overflow-x: auto;
+    white-space: pre-wrap; /* This ensures the text wraps inside the pre element */
+    word-wrap: break-word; /* This ensures long words break to fit the container */
+}

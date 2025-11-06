@@ -1,0 +1,34 @@
+.add-notification h2 {
+    margin-bottom: 20px;
+    color: #252639;
+}
+
+.add-notification label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.add-notification input[type="text"],
+.add-notification textarea {
+    width: 90%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.add-notification button {
+    display: block;
+    width: 80%;
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.add-notification button:hover {
+    background-color: #0056b3;
+}
